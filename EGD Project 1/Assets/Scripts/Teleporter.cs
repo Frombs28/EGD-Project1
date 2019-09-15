@@ -9,7 +9,7 @@ public class Teleporter : MonoBehaviour
     public Camera main;
     public Image fade;
     float startTime;
-    public float fadeTime;
+    public float fadeTime = 0.5f;
 
     // Start is called before the first frame update
     void Start()

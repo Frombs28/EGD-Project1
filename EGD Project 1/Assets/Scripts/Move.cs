@@ -15,6 +15,7 @@ public class Move : MonoBehaviour {
     private Vector3 camSid;
     public AudioSource footStep;
     bool playing = false;
+    public Text txt;
 
     bool isPlayerControllable = true;
 
@@ -57,6 +58,29 @@ public class Move : MonoBehaviour {
                 footStep.Stop();
                 playing = false;
             }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(isPlayerControllable)
+        {
+            if(other.tag == "Teleporter")
+            {
+                txt.text = "Press E";
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    //put teleport code here
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Teleporter")
+        {
+            txt.text = "";
         }
     }
 }

@@ -36,12 +36,16 @@ public class PointsOnCanvas : MonoBehaviour
         playerTwoVisit = new bool[3];
         for (int i = 0; i < 3; i++)
         {
-            playerOneCheck[i] = "0";
             playerOneVisit[i] = false;
-            playerTwoCheck[i] = "0";
             playerTwoVisit[i] = false;
             
         }
+        playerOneCheck[0] = "2";
+        playerOneCheck[1] = "3";
+        playerOneCheck[2] = "4";
+        playerTwoCheck[0] = "15";
+        playerOneCheck[1] = "3";
+        playerOneCheck[2] = "6";
     }
 
     // Update is called once per frame

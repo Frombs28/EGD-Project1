@@ -45,7 +45,7 @@ public class Teleporter : MonoBehaviour
         fade.CrossFadeAlpha(1.0f, fadeTime, false);
         // Wait for fade out
         startTime = Time.time;
-        while (Time.time - startTime < fadeDelay)
+        while (Time.time - startTime < fadeTime + fadeDelay)
         {
             yield return null;
         }
@@ -56,7 +56,8 @@ public class Teleporter : MonoBehaviour
     private void MovePlayer()
     {
         // Move player
-        player.transform.position = target.transform.position;
+        Vector3 newPos = new Vector3(target.transform.position.x, target.transform.position.y + 5, target.transform.position.z - 2);
+        player.transform.position = newPos;
     }
 
     public void Fade()

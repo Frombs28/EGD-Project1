@@ -29,6 +29,8 @@ public class Move : MonoBehaviour {
     void Start () {
         rgd = GetComponent<Rigidbody>();
         rotateScript = cam.GetComponent<rotate>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void SetPlayerControllable(bool state)

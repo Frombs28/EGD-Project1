@@ -22,6 +22,7 @@ public class CameraMovement : MonoBehaviour
         TrackTarget();
     }
     public void SetTarget(GameObject newTarget){
+        transform.position = newTarget.transform.position + offset;
         target = newTarget;
     }
     public void TrackTarget(){

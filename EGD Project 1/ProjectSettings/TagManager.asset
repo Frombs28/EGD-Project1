@@ -23,6 +23,7 @@ TagManager:
   - 15
   - 16
   - playerOne
+  - playerTwo
   layers:
   - Default
   - TransparentFX

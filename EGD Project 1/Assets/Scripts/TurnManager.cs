@@ -8,9 +8,8 @@ public class TurnManager : MonoBehaviour
     int currentPlayer = 1;
     public GameObject player1 = null;
     public GameObject player2 = null;
-    public Button endButton = null;
-    public Button hintButton = null;
     public Teleporter tele = null;
+    public Text hintText;
     public int numTaken = 0;
     public int maxTurns = 5; 
     CameraMovement cameraMovement;
@@ -19,8 +18,8 @@ public class TurnManager : MonoBehaviour
     {
         cameraMovement = FindObjectOfType<CameraMovement>();
         cameraMovement.SetTarget(player1);
-        endButton.onClick.AddListener(EndTurn);
-        hintButton.onClick.AddListener(SkipTurn);
+        if(hintText!=null) hintText.text = "";
+
     }
 
     // Update is called once per frame
@@ -28,6 +27,7 @@ public class TurnManager : MonoBehaviour
     {
         
     }
+
     public void SwitchTurns(){
         //TO DO: fade screen, control switching
         tele.Fade();
@@ -42,22 +42,35 @@ public class TurnManager : MonoBehaviour
         }
         numTaken = 0;
     }
-    public void TakeTurn(){
-        numTaken++;
+
+    ///<summary>
+    ///returns false if a turn cannot be taken, true otherwise and increments the number of turns taken
+    ///</summary>
+    public bool TakeTurn(){
         if(numTaken==maxTurns){
-            //remove this if player should confirm that their turn is over or w/e
-            SwitchTurns();
+            return false;
         }
+        numTaken++;
+        return true;
     }
+
     public void SkipTurn(){
         //TO DO: reveal the info here
-        EndTurn();
+        //Double interact 2 end turn??
+        //EndTurn();
+
+        //prevents player from moving
+        if(hintText!=null) hintText.text = "You are in room <Room Tag>";
+        numTaken = maxTurns;
     }
+
     public void EndTurn(){
         SwitchTurns();
     }
+
     private IEnumerator camSwitch(GameObject player, float waitTime){
         yield return new WaitForSeconds(waitTime);
+        if(hintText!=null) hintText.text = "";
         cameraMovement.SetTarget(player);
     }
 }

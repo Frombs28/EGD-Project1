@@ -9,7 +9,7 @@ public class TurnManager : MonoBehaviour
     public GameObject player1 = null;
     public GameObject player2 = null;
     List<Move> playerMove = new List<Move>();
-    public Teleporter tele = null;
+    Teleporter tele = null;
     public Text hintText;
     public int numTaken = 0;
     public int maxTurns = 5; 
@@ -17,6 +17,7 @@ public class TurnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tele = FindObjectOfType<Teleporter>();
         cameraMovement = FindObjectOfType<CameraMovement>();
         cameraMovement.SetTarget(player1);
         if(hintText!=null) hintText.text = "";
@@ -66,6 +67,7 @@ public class TurnManager : MonoBehaviour
         //prevents player from moving
         if(hintText!=null) hintText.text = "You are in " + roomName;
         numTaken = maxTurns;
+        Debug.Log(roomName);
     }
 
     public void EndTurn(){

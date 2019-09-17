@@ -8,6 +8,7 @@ public class CampfireInteract : MonoBehaviour
     TurnManager turns;
     Move move;
     public Text text;
+    bool up = true;
 
     //possibily should be moved to Move.cs, keeping it seperate for now.
     // Start is called before the first frame update
@@ -33,16 +34,19 @@ public class CampfireInteract : MonoBehaviour
             if(other.gameObject.tag=="Fire"){
                 //from Move.cs
                 text.text = "Press E";
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E)&&up)
                 {
+                    up = false;
                     text.text = "";
-                    move.SetPlayerControllable(false);
                     if(turns.numTaken == 0){
                         turns.SkipTurn(other.gameObject.transform.parent.name);
                     }
                     else{
                         turns.EndTurn();
                     }             
+                }
+                else{
+                    up = true;
                 }
             }
         }

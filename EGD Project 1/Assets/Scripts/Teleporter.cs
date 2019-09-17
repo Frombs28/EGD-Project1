@@ -10,6 +10,8 @@ public class Teleporter : MonoBehaviour
     public Image fade;
     float startTime;
     public float fadeTime = 0.5f;
+    public float fadeDelay = 0.2f;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -29,29 +31,37 @@ public class Teleporter : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // Trigger fade out
-            StartCoroutine("FadeOut",other.gameObject);
+            Fade();
+            player = other.gameObject;
+            Invoke("MovePlayer", fadeTime/2);
         }
     }
 
-    IEnumerator FadeOut(GameObject player)
+    IEnumerator FadeOut()
     {
         // Do some kind of effect/sound?
 
         // First fade out
         fade.CrossFadeAlpha(1.0f, fadeTime, false);
-
         // Wait for fade out
         startTime = Time.time;
-        while (Time.time - startTime < fadeTime)
+        while (Time.time - startTime < fadeDelay)
         {
             yield return null;
         }
-
-        // Move player
-        player.transform.position = target.transform.position;
-
         // Fade in
         fade.CrossFadeAlpha(0.0f, fadeTime, false);
+    }
+
+    private void MovePlayer()
+    {
+        // Move player
+        player.transform.position = target.transform.position;
+    }
+
+    public void Fade()
+    {
+        StartCoroutine("FadeOut");
     }
 
 

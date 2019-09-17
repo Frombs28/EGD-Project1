@@ -16,8 +16,9 @@ public class Move : MonoBehaviour {
     public AudioSource footStep;
     bool playing = false;
     public Text txt;
+    private rotate rotateScript;
 
-    bool isPlayerControllable = true;
+    public bool isPlayerControllable = true;
 
     [Space]
     [SerializeField]
@@ -27,6 +28,7 @@ public class Move : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rgd = GetComponent<Rigidbody>();
+        rotateScript = GetComponentInChildren<rotate>();
     }
 
     public void SetPlayerControllable(bool state)
@@ -70,6 +72,9 @@ public class Move : MonoBehaviour {
                 txt.text = "Press E";
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    txt.text = "";
+                    isPlayerControllable = false;
+                    rotateScript.fading = true;               
                     //put teleport code here
                 }
             }

@@ -9,21 +9,23 @@ public class CameraMovement : MonoBehaviour
     Vector3 offset;
     //target should be set to the first player to get correctOffset
     public GameObject target = null;
+    Follow follow;
     void Start()
     {
         if(target!=null){
             offset = transform.position - target.transform.position;
         }
+        follow = GetComponent<Follow>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        TrackTarget();
+        //TrackTarget();
     }
     public void SetTarget(GameObject newTarget){
-        transform.position = newTarget.transform.position + offset;
-        target = newTarget;
+        //transform.position = newTarget.transform.position + offset;
+        follow.objectToFollow = newTarget;
     }
     public void TrackTarget(){
         //camera code to track target here

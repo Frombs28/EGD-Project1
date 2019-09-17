@@ -28,7 +28,7 @@ public class Move : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rgd = GetComponent<Rigidbody>();
-        rotateScript = GetComponentInChildren<rotate>();
+        rotateScript = cam.GetComponent<rotate>();
     }
 
     public void SetPlayerControllable(bool state)
@@ -37,18 +37,18 @@ public class Move : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         if (isPlayerControllable)
         {
             camDir = new Vector3(cam.transform.forward.x, 0, cam.transform.forward.z).normalized;
             camSid = new Vector3(cam.transform.right.x, 0, cam.transform.right.z).normalized;
             if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0)
             {
-                transform.position = transform.position + Input.GetAxis("Horizontal") * camSid * Time.deltaTime * speed;
+                rgd.MovePosition(transform.position + Input.GetAxis("Horizontal") * camSid * Time.deltaTime * speed);
             }
             if (Mathf.Abs(Input.GetAxis("Vertical")) > 0)
             {
-                transform.position = transform.position + Input.GetAxis("Vertical") * camDir * Time.deltaTime * speed;
+                rgd.MovePosition(transform.position + Input.GetAxis("Vertical") * camDir * Time.deltaTime * speed);
             }
             if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0 && !playing || Mathf.Abs(Input.GetAxis("Vertical")) > 0 && !playing)
             {

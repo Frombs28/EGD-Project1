@@ -8,6 +8,7 @@ public class rotate : MonoBehaviour {
     private float rotateY;
     public float rotateSpeedX;
     public float rotateSpeedY;
+    public float rotateTime = 0.5f;
     public bool fading = false;
 
     // Use this for initialization
@@ -16,13 +17,13 @@ public class rotate : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
         if (!fading)
         {
             rotateX += rotateSpeedX * Input.GetAxis("Mouse X");
             rotateY -= rotateSpeedY * Input.GetAxis("Mouse Y");
             rotateY = Mathf.Clamp(rotateY, -90, 90);
-            transform.eulerAngles = new Vector3(rotateY, rotateX, 0);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(rotateY, rotateX, 0), rotateTime);
         }
     }
 }

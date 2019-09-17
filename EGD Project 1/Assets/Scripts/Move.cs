@@ -63,6 +63,7 @@ public class Move : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
+        print("hello"); 
         if(isPlayerControllable)
         {
             if(other.tag == "Teleporter")

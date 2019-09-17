@@ -19,8 +19,10 @@ public class TurnManager : MonoBehaviour
     {
         cameraMovement = FindObjectOfType<CameraMovement>();
         cameraMovement.SetTarget(player1);
-        endButton.onClick.AddListener(EndTurn);
-        hintButton.onClick.AddListener(SkipTurn);
+        if(endButton!=null&&hintButton!=null){
+            endButton.onClick.AddListener(EndTurn);
+            hintButton.onClick.AddListener(SkipTurn);
+        }  
     }
 
     // Update is called once per frame
@@ -42,12 +44,14 @@ public class TurnManager : MonoBehaviour
         }
         numTaken = 0;
     }
-    public void TakeTurn(){
-        numTaken++;
+    //returns false if a turn cannot be taken, true otherwise
+    public bool TakeTurn(){
         if(numTaken==maxTurns){
             //remove this if player should confirm that their turn is over or w/e
-            SwitchTurns();
+            return false;
         }
+        numTaken++;
+        return true;
     }
     public void SkipTurn(){
         //TO DO: reveal the info here

@@ -18,13 +18,25 @@ public class PointsOnCanvas : MonoBehaviour
 
     public Text moveAmount;
 
+
+    public string[] playerOneCheck;
+    public bool[] playerOneVisit;
+    public string[] playerTwoCheck;
+    public bool[] playerTwoVisit;
+
     //public int p1;
     //public int p2;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        for (int i = 0; i < 3; i++)
+        {
+            playerOneCheck[i] = "0";
+            playerOneVisit[i] = false;
+            playerTwoCheck[i] = "0";
+            playerTwoVisit[i] = false;
+        }
     }
 
     // Update is called once per frame

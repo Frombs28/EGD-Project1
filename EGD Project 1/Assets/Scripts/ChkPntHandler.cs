@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class ChkPntHandler : MonoBehaviour
 {
-    public string [] playerOneCheck;
-    public bool[] playerOneVisit;
-    public string[] playerTwoCheck;
-    public bool[] playerTwoVisit;
+    //public string [] playerOneCheck;
+    //public bool[] playerOneVisit;
+    //public string[] playerTwoCheck;
+    //public bool[] playerTwoVisit;
 
     public Canvas mainCanvas;
+    public PointsOnCanvas c;
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 3; i++)
+        /*for (int i = 0; i < 3; i++)
         {
             playerOneCheck[i] = "0";
             playerOneVisit[i] = false;
             playerTwoCheck[i] = "0";
             playerTwoVisit[i] = false;
-        }
+        }*/
+        c = mainCanvas.GetComponent<PointsOnCanvas>();
     }
 
     // Update is called once per frame
@@ -31,45 +33,45 @@ public class ChkPntHandler : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (gameObject.tag == playerOneCheck[0])
+        if (gameObject.tag == c.playerOneCheck[0])
         {
-            playerOneVisit[0] = true;
+            c.playerOneVisit[0] = true;
             mainCanvas.GetComponent<PointsOnCanvas>().UpdatePlayerOne(1);
         }
-        if (gameObject.tag == playerOneCheck[1])
+        if (gameObject.tag == c.playerOneCheck[1])
         {
-            if((collision.gameObject.tag == "playerOne" && playerOneVisit[0] == true) || collision.gameObject.tag == "playerTwo")
+            if((collision.gameObject.tag == "playerOne" && c.playerOneVisit[0] == true) || collision.gameObject.tag == "playerTwo")
             {
-                playerOneVisit[1] = true;
+                c.playerOneVisit[1] = true;
                 mainCanvas.GetComponent<PointsOnCanvas>().UpdatePlayerOne(2);
             }
         }
-        if (gameObject.tag == playerOneCheck[2])
+        if (gameObject.tag == c.playerOneCheck[2])
         {
-            if ((collision.gameObject.tag == "playerOne" && playerOneVisit[0] == true && playerOneVisit[1]) || collision.gameObject.tag == "playerTwo")
+            if ((collision.gameObject.tag == "playerOne" && c.playerOneVisit[0] == true && c.playerOneVisit[1]) || collision.gameObject.tag == "playerTwo")
             {
-                playerOneVisit[2] = true;
+                c.playerOneVisit[2] = true;
                 mainCanvas.GetComponent<PointsOnCanvas>().UpdatePlayerOne(3);
             }
         }
-        if (gameObject.tag == playerTwoCheck[0])
+        if (gameObject.tag == c.playerTwoCheck[0])
         {
-            playerTwoVisit[0] = true;
+            c.playerTwoVisit[0] = true;
             mainCanvas.GetComponent<PointsOnCanvas>().UpdatePlayerTwo(1);
         }
-        if (gameObject.tag == playerTwoCheck[1])
+        if (gameObject.tag == c.playerTwoCheck[1])
         {
-            if ((collision.gameObject.tag == "playerTwo" && playerTwoVisit[0] == true) || collision.gameObject.tag == "playerOne")
+            if ((collision.gameObject.tag == "playerTwo" && c.playerTwoVisit[0] == true) || collision.gameObject.tag == "playerOne")
             {
-                playerTwoVisit[1] = true;
+                c.playerTwoVisit[1] = true;
                 mainCanvas.GetComponent<PointsOnCanvas>().UpdatePlayerTwo(2);
             }
         }
-        if (gameObject.tag == playerTwoCheck[2])
+        if (gameObject.tag == c.playerTwoCheck[2])
         {
-            if ((collision.gameObject.tag == "playerTwo" && playerTwoVisit[0] == true && playerTwoVisit[1]) || collision.gameObject.tag == "playerOne")
+            if ((collision.gameObject.tag == "playerTwo" && c.playerTwoVisit[0] == true && c.playerTwoVisit[1]) || collision.gameObject.tag == "playerOne")
             {
-                playerTwoVisit[2] = true;
+                c.playerTwoVisit[2] = true;
                 mainCanvas.GetComponent<PointsOnCanvas>().UpdatePlayerTwo(3);
             }
         }

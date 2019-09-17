@@ -32,15 +32,15 @@ public class PointsOnCanvas : MonoBehaviour
     {
         playerOneCheck = new string[3];
         playerOneVisit = new bool[3];
-        //playerTwoCheck = new string[3];
+        playerTwoCheck = new string[3];
+        playerTwoVisit = new bool[3];
         for (int i = 0; i < 3; i++)
         {
             playerOneCheck[i] = "0";
             playerOneVisit[i] = false;
-            /*
             playerTwoCheck[i] = "0";
             playerTwoVisit[i] = false;
-            */
+            
         }
     }
 

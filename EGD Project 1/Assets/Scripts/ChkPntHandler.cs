@@ -22,6 +22,7 @@ public class ChkPntHandler : MonoBehaviour
             playerTwoCheck[i] = "0";
             playerTwoVisit[i] = false;
         }*/
+        mainCanvas = FindObjectOfType<Canvas>();
         c = mainCanvas.GetComponent<PointsOnCanvas>();
     }
 
@@ -31,7 +32,7 @@ public class ChkPntHandler : MonoBehaviour
         
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider collision)
     {
         if (gameObject.tag == c.playerOneCheck[0])
         {

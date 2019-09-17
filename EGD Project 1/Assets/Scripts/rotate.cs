@@ -8,6 +8,7 @@ public class rotate : MonoBehaviour {
     private float rotateY;
     public float rotateSpeedX;
     public float rotateSpeedY;
+    public bool fading = false;
 
     // Use this for initialization
     void Start () {
@@ -16,9 +17,12 @@ public class rotate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        rotateX += rotateSpeedX * Input.GetAxis("Mouse X");
-        rotateY -= rotateSpeedY * Input.GetAxis("Mouse Y");
-        rotateY = Mathf.Clamp(rotateY, -90, 90);
-        transform.eulerAngles = new Vector3(rotateY, rotateX, 0);
+        if (!fading)
+        {
+            rotateX += rotateSpeedX * Input.GetAxis("Mouse X");
+            rotateY -= rotateSpeedY * Input.GetAxis("Mouse Y");
+            rotateY = Mathf.Clamp(rotateY, -90, 90);
+            transform.eulerAngles = new Vector3(rotateY, rotateX, 0);
+        }
     }
 }

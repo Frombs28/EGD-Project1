@@ -44,7 +44,9 @@ public class TurnManager : MonoBehaviour
         }
         numTaken = 0;
     }
-    //returns false if a turn cannot be taken, true otherwise
+    ///<summary>
+    ///returns false if a turn cannot be taken, true otherwise and increments the number of turns taken
+    ///</summary>
     public bool TakeTurn(){
         if(numTaken==maxTurns){
             //remove this if player should confirm that their turn is over or w/e

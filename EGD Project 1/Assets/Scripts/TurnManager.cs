@@ -8,7 +8,8 @@ public class TurnManager : MonoBehaviour
     int currentPlayer = 1;
     public GameObject player1 = null;
     public GameObject player2 = null;
-    public Teleporter tele = null;
+    List<Move> playerMove = new List<Move>();
+    Teleporter tele = null;
     public Text hintText;
     public int numTaken = 0;
     public int maxTurns = 5; 
@@ -16,9 +17,12 @@ public class TurnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tele = FindObjectOfType<Teleporter>();
         cameraMovement = FindObjectOfType<CameraMovement>();
         cameraMovement.SetTarget(player1);
         if(hintText!=null) hintText.text = "";
+        playerMove.Add(player1.GetComponent<Move>());
+        playerMove.Add(player2.GetComponent<Move>());
 
     }
 
@@ -32,6 +36,7 @@ public class TurnManager : MonoBehaviour
         //TO DO: fade screen, control switching
         tele.Fade();
         Debug.Log("switching!!!");
+        playerMove[currentPlayer-1].SetPlayerControllable(false);
         if(currentPlayer==1){
             currentPlayer = 2;
             StartCoroutine(camSwitch(player2, tele.fadeTime));
@@ -54,14 +59,15 @@ public class TurnManager : MonoBehaviour
         return true;
     }
 
-    public void SkipTurn(){
+    public void SkipTurn(string roomName){
         //TO DO: reveal the info here
         //Double interact 2 end turn??
         //EndTurn();
 
         //prevents player from moving
-        if(hintText!=null) hintText.text = "You are in room <Room Tag>";
+        if(hintText!=null) hintText.text = "You are in " + roomName;
         numTaken = maxTurns;
+        Debug.Log(roomName);
     }
 
     public void EndTurn(){
@@ -72,5 +78,6 @@ public class TurnManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         if(hintText!=null) hintText.text = "";
         cameraMovement.SetTarget(player);
+        playerMove[currentPlayer-1].SetPlayerControllable(true);
     }
 }

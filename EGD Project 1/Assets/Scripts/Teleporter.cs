@@ -23,7 +23,7 @@ public class Teleporter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        startTime += Time.deltaTime;
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,7 +33,7 @@ public class Teleporter : MonoBehaviour
             // Trigger fade out
             Fade();
             player = other.gameObject;
-            Invoke("MovePlayer", fadeTime/2);
+            Invoke("MovePlayer", fadeTime);
         }
     }
 

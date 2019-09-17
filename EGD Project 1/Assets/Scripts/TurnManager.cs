@@ -10,7 +10,8 @@ public class TurnManager : MonoBehaviour
     public GameObject player2 = null;
     public Button endButton = null;
     public Button hintButton = null;
-    int numTaken = 0;
+    public Teleporter tele = null;
+    public int numTaken = 0;
     public int maxTurns = 5; 
     CameraMovement cameraMovement;
     // Start is called before the first frame update
@@ -28,15 +29,16 @@ public class TurnManager : MonoBehaviour
         
     }
     public void SwitchTurns(){
-        //TO DO: fade screen
+        //TO DO: fade screen, control switching
+        tele.Fade();
         Debug.Log("switching!!!");
         if(currentPlayer==1){
             currentPlayer = 2;
-            cameraMovement.SetTarget(player2);
+            StartCoroutine(camSwitch(player2, tele.fadeTime));
         }
         else{
             currentPlayer = 1;
-            cameraMovement.SetTarget(player1);
+            StartCoroutine(camSwitch(player1, tele.fadeTime));
         }
         numTaken = 0;
     }
@@ -53,5 +55,9 @@ public class TurnManager : MonoBehaviour
     }
     public void EndTurn(){
         SwitchTurns();
+    }
+    private IEnumerator camSwitch(GameObject player, float waitTime){
+        yield return new WaitForSeconds(waitTime);
+        cameraMovement.SetTarget(player);
     }
 }

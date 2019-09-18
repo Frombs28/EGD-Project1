@@ -39,20 +39,19 @@ public class Teleporter : MonoBehaviour
         if ((other.gameObject.CompareTag("playerOne") || (other.gameObject.CompareTag("playerTwo"))) && (turns.TakeTurn()))
         {
             // Trigger fade out
-            Fade();
+            Fade(other.gameObject);
             player = other.gameObject;
             Invoke("MovePlayer", fadeTime);
         }
     }
 
-    IEnumerator FadeOut()
+    IEnumerator FadeOut(GameObject player)
     {
         // Do some kind of effect/sound?
 
         // First fade out
         fade.CrossFadeAlpha(1.0f, fadeTime, false);
-        player1.SendMessage("Stop",fadeTime);
-        player2.SendMessage("Stop",fadeTime);
+        player.SendMessage("Stop",fadeTime);
         // Wait for fade out
         startTime = Time.time;
         while (Time.time - startTime < fadeTime + fadeDelay)
@@ -63,8 +62,7 @@ public class Teleporter : MonoBehaviour
         manager.SendMessage("On", target.transform.GetChild(6).gameObject.tag);
         // Fade in
         fade.CrossFadeAlpha(0.0f, fadeTime, false);
-        player1.SendMessage("Begin",fadeTime/2);
-        player2.SendMessage("Begin",fadeTime/2);
+        player.SendMessage("Begin",fadeTime/2);
     }
 
     private void MovePlayer()
@@ -80,9 +78,9 @@ public class Teleporter : MonoBehaviour
         //player.transform.rotation = Quaternion.Slerp(player.transform.rotation, target.transform.rotation, 0.5f);
     }
 
-    public void Fade()
+    public void Fade(GameObject player)
     {
-        StartCoroutine("FadeOut");
+        StartCoroutine(FadeOut(player));
     }
 
     void SetTarget(GameObject newTarget)

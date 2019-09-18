@@ -53,7 +53,7 @@ public class TurnManager : MonoBehaviour
             next_last_turn = false;
         }
         //TO DO: fade screen, control switching
-        tele.Fade();
+        StartCoroutine("FadeOut");
         Debug.Log("switching!!!");
         playerMove[currentPlayer-1].SetPlayerControllable(false);
         if(currentPlayer==1){
@@ -129,5 +129,21 @@ public class TurnManager : MonoBehaviour
     public void LastTurn()
     {
         next_last_turn = true;
+    }
+    //taken from teleporter
+    IEnumerator FadeOut()
+    {
+        // Do some kind of effect/sound?
+
+        // First fade out
+        tele.fade.CrossFadeAlpha(1.0f, tele.fadeTime, false);
+        // Wait for fade out
+        float startTime = Time.time;
+        while (Time.time - startTime < tele.fadeTime + tele.fadeDelay)
+        {
+            yield return null;
+        }
+        // Fade in
+        tele.fade.CrossFadeAlpha(0.0f, tele.fadeTime, false);
     }
 }

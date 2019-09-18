@@ -20,6 +20,7 @@ public class Move : MonoBehaviour {
     public List<AudioClip> aud;
     public float footstepTime = 0.5f;
     private float footTimer = 0f;
+    public float moveLockTime = 1f;
 
     public bool isPlayerControllable = true;
 
@@ -115,7 +116,7 @@ public class Move : MonoBehaviour {
     void Begin(float fadeTime)
     {
         rotateScript.fading = false;
-        Invoke("AllowMovement", fadeTime+2);
+        Invoke("AllowMovement", fadeTime+moveLockTime);
     }
 
    void AllowMovement()

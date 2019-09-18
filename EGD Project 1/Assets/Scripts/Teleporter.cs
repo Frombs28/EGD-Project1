@@ -12,10 +12,12 @@ public class Teleporter : MonoBehaviour
     public float fadeDelay = 0.2f;
     public GameObject player;
     TurnManager turns;
+    GameObject manager;
 
     // Start is called before the first frame update
     void Start()
     {
+        manager = GameObject.FindGameObjectWithTag("Manager");
         fade = GameObject.FindGameObjectWithTag("Fade").GetComponent<Image>();
         fade.canvasRenderer.SetAlpha(0.0f);
         startTime = 0f;
@@ -51,6 +53,8 @@ public class Teleporter : MonoBehaviour
         {
             yield return null;
         }
+        manager.SendMessage("Off", transform.parent.transform.GetChild(6).gameObject.tag);
+        manager.SendMessage("On", target.transform.GetChild(6).gameObject.tag);
         // Fade in
         fade.CrossFadeAlpha(0.0f, fadeTime, false);
     }

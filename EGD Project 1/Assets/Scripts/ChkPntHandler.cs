@@ -6,11 +6,14 @@ public class ChkPntHandler : MonoBehaviour
 {
     public Canvas mainCanvas;
     public PointsOnCanvas c;
+    GameObject player1Win;
+    TurnManager manager;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCanvas = FindObjectOfType<Canvas>();
+        manager = FindObjectOfType<TurnManager>();
         c = mainCanvas.GetComponent<PointsOnCanvas>();
     }
 
@@ -45,6 +48,8 @@ public class ChkPntHandler : MonoBehaviour
             {
                 Debug.Log("3rd check");
                 c.playerOneVisit[2] = true;
+                player1Win = collision.gameObject;
+                manager.LastTurn();
                 mainCanvas.GetComponent<PointsOnCanvas>().UpdatePlayerOne(3);
             }
         }
@@ -67,6 +72,11 @@ public class ChkPntHandler : MonoBehaviour
             {
                 c.playerTwoVisit[2] = true;
                 mainCanvas.GetComponent<PointsOnCanvas>().UpdatePlayerTwo(3);
+                if(c.playerOneVisit[0] && c.playerOneVisit[1] && c.playerOneVisit[2])
+                {
+                    c.GameOver(c.gameObject);
+                }
+                c.GameOver(collision.gameObject);
             }
         }
 

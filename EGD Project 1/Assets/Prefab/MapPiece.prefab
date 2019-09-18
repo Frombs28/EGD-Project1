@@ -1074,6 +1074,11 @@ PrefabInstance:
       propertyPath: LightsModule.intensityCurve.scalar
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 230995010152211636, guid: 98b7e573bd93f75418a9079860431c48,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c076eea851604487b3970373f24d835, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98b7e573bd93f75418a9079860431c48, type: 3}
 --- !u!4 &1025091187575176877 stripped
@@ -1159,6 +1164,11 @@ PrefabInstance:
       propertyPath: LightsModule.intensityCurve.scalar
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 879766797954940131, guid: 5453121d1b17e684b951d8f9d21394dd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5d57be5a84ceab4c9167f6202928b7b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5453121d1b17e684b951d8f9d21394dd, type: 3}
 --- !u!4 &8891451502363671447 stripped

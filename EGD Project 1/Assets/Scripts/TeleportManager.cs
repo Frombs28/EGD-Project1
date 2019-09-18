@@ -12,6 +12,8 @@ public class TeleportManager : MonoBehaviour
         for (i = 0; i < 16; i++)
         {
             GameObject room = rooms[i];
+            room.transform.GetChild(5).gameObject.SetActive(false);
+            room.transform.GetChild(7).gameObject.SetActive(false);
             GameObject up = room.transform.GetChild(0).gameObject;
             GameObject down = room.transform.GetChild(1).gameObject;
             GameObject right = room.transform.GetChild(2).gameObject;
@@ -57,11 +59,29 @@ public class TeleportManager : MonoBehaviour
                 left.SendMessage("SetTarget", rooms[i - 1]);
             }
         }
+        rooms[0].transform.GetChild(5).gameObject.SetActive(true);
+        rooms[0].transform.GetChild(7).gameObject.SetActive(true);
+        rooms[15].transform.GetChild(5).gameObject.SetActive(true);
+        rooms[15].transform.GetChild(7).gameObject.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void Off(string roomNumber)
+    {
+        int number = int.Parse(roomNumber);
+        rooms[number - 1].transform.GetChild(5).gameObject.SetActive(false);
+        rooms[number - 1].transform.GetChild(7).gameObject.SetActive(false);
+    }
+
+    void On(string roomNumber)
+    {
+        int number = int.Parse(roomNumber);
+        rooms[number - 1].transform.GetChild(5).gameObject.SetActive(true);
+        rooms[number - 1].transform.GetChild(7).gameObject.SetActive(true);
     }
 }

@@ -20,6 +20,7 @@ public class Move : MonoBehaviour {
     public List<AudioClip> aud;
     public float footstepTime = 0.5f;
     private float footTimer = 0f;
+    public float moveLockTime = 1f;
 
     public bool isPlayerControllable = true;
 
@@ -104,5 +105,27 @@ public class Move : MonoBehaviour {
         {
             txt.text = "";
         }
+    }
+
+    void Stop(float fadeTime)
+    {
+        Invoke("DenyMovement", fadeTime);
+    }
+
+    void DenyMovement()
+    {
+        isPlayerControllable = false;
+        rotateScript.fading = true;
+    }
+
+    void Begin(float fadeTime)
+    {
+        Invoke("AllowMovement", fadeTime+moveLockTime);
+    }
+
+   void AllowMovement()
+    {
+        isPlayerControllable = true;
+        rotateScript.fading = false;
     }
 }

@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class PointsOnCanvas : MonoBehaviour
 {
-    public Image chkOneP1;
-    public Image chkTwoP1;
-    public Image chkThreeP1;
+    public GameObject chkOneP1;
+    public GameObject chkTwoP1;
+    public GameObject chkThreeP1;
 
-    public Image chkOneP2;
-    public Image chkTwoP2;
-    public Image chkThreeP2;
+    public GameObject chkOneP2;
+    public GameObject chkTwoP2;
+    public GameObject chkThreeP2;
 
     public Sprite empty;
     public Sprite full;
@@ -20,6 +20,8 @@ public class PointsOnCanvas : MonoBehaviour
     public Text endText;
 
     public Text moveAmount;
+
+    //public Material Keymat;
 
 
     public string[] playerOneCheck;
@@ -44,12 +46,12 @@ public class PointsOnCanvas : MonoBehaviour
             playerTwoVisit[i] = false;
             
         }
-        playerOneCheck[0] = "2";
-        playerOneCheck[1] = "3";
-        playerOneCheck[2] = "4";
-        playerTwoCheck[0] = "15";
-        playerOneCheck[1] = "3";
-        playerOneCheck[2] = "6";
+        playerOneCheck[0] = "11";
+        playerOneCheck[1] = "4";
+        playerOneCheck[2] = "9";
+        playerTwoCheck[0] = "6";
+        playerTwoCheck[1] = "15";
+        playerTwoCheck[2] = "5";
     }
 
     // Update is called once per frame
@@ -61,31 +63,32 @@ public class PointsOnCanvas : MonoBehaviour
     {
         if (num == 1)
         {
-            chkOneP1.sprite = full;
+            Debug.Log("Update");
+            chkOneP1.SetActive(true);
         }
         if (num == 2)
         {
-            chkTwoP1.sprite = full;
+            chkTwoP1.SetActive(true);
         }
         if (num == 3)
         {
             //Debug.Log("update canvas");
-            chkThreeP1.sprite = full;
+            chkThreeP1.SetActive(true);
         }
     }
     public void UpdatePlayerTwo(int num)
     {
         if (num == 1)
         {
-            chkOneP2.sprite = full;
+            chkOneP2.SetActive(true);
         }
         if (num == 2)
         {
-            chkTwoP2.sprite = full;
+            chkTwoP2.SetActive(true);
         }
         if (num == 3)
         {
-            chkThreeP2.sprite = full;
+            chkThreeP2.SetActive(true);
         }
     }
 

@@ -13,7 +13,6 @@ public class Teleporter : MonoBehaviour
     public GameObject player;
     TurnManager turns;
     GameObject manager;
-    Camera mainCam;
     GameObject player1;
     GameObject player2;
 
@@ -64,8 +63,8 @@ public class Teleporter : MonoBehaviour
         manager.SendMessage("On", target.transform.GetChild(6).gameObject.tag);
         // Fade in
         fade.CrossFadeAlpha(0.0f, fadeTime, false);
-        player1.SendMessage("Begin",fadeTime);
-        player2.SendMessage("Begin",fadeTime);
+        player1.SendMessage("Begin",fadeTime/2);
+        player2.SendMessage("Begin",fadeTime/2);
     }
 
     private void MovePlayer()
@@ -74,7 +73,8 @@ public class Teleporter : MonoBehaviour
         Vector3 newPos = new Vector3(target.transform.position.x, target.transform.position.y + 5, target.transform.position.z - 2);
         player.transform.position = newPos;
         //player.gameObject.transform.LookAt(target.transform);
-        //player.transform.Rotate(0, 180, 0);
+        //Camera.main.transform.Rotate(0, 180, 0);
+        Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, target.transform.rotation, 0.5f);
     }
 
     public void Fade()

@@ -61,6 +61,8 @@ public class TeleportManager : MonoBehaviour
         }
         rooms[0].transform.GetChild(5).gameObject.SetActive(true);
         rooms[0].transform.GetChild(7).gameObject.SetActive(true);
+        rooms[15].transform.GetChild(5).gameObject.SetActive(true);
+        rooms[15].transform.GetChild(7).gameObject.SetActive(true);
     }
 
     // Update is called once per frame

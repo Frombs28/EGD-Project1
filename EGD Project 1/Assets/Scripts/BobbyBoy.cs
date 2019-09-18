@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BobbyBoy : MonoBehaviour
 {
-    private float speed;
-    private float amp;
+    public float speed;
+    public float amp;
     Vector3 origPos;
     // Start is called before the first frame update
     void Start()
     {
         origPos = transform.position;
-        speed = Random.Range(1, 2.1f);
-        amp = Random.Range(.1f, .6f);
+        speed = speed + Random.Range(0, 1f);
+        amp = amp + Random.Range(0f, .2f);
     }
 
     // Update is called once per frame

@@ -23,6 +23,7 @@ public class TurnManager : MonoBehaviour
         if(hintText!=null) hintText.text = "";
         playerMove.Add(player1.GetComponent<Move>());
         playerMove.Add(player2.GetComponent<Move>());
+        playerMove[1].SetPlayerControllable(false);
 
     }
 
@@ -55,6 +56,7 @@ public class TurnManager : MonoBehaviour
         if(numTaken==maxTurns){
             return false;
         }
+        Debug.Log(numTaken);
         numTaken++;
         return true;
     }

@@ -51,8 +51,8 @@ public class Teleporter : MonoBehaviour
 
         // First fade out
         fade.CrossFadeAlpha(1.0f, fadeTime, false);
-        player1.SendMessage("Stop");
-        player2.SendMessage("Stop");
+        player1.SendMessage("Stop",fadeTime);
+        player2.SendMessage("Stop",fadeTime);
         // Wait for fade out
         startTime = Time.time;
         while (Time.time - startTime < fadeTime + fadeDelay)
@@ -70,11 +70,14 @@ public class Teleporter : MonoBehaviour
     private void MovePlayer()
     {
         // Move player
-        Vector3 newPos = new Vector3(target.transform.position.x, target.transform.position.y + 5, target.transform.position.z - 2);
+        Vector3 newPos = new Vector3(target.transform.position.x, target.transform.position.y + 5, target.transform.position.z - 5);
         player.transform.position = newPos;
+        //Vector3 newDir = Vector3.RotateTowards(transform.forward, target.transform.position - transform.position, Time.deltaTime, 0.0f);
+
         //player.gameObject.transform.LookAt(target.transform);
-        //Camera.main.transform.Rotate(0, 180, 0);
-        Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, target.transform.rotation, 0.5f);
+        //Camera.main.transform.Rotate(0, 0, 0, Space.World);
+        //Camera.main.transform.rotation = Quaternion.LookRotation(newDir);
+        //player.transform.rotation = Quaternion.Slerp(player.transform.rotation, target.transform.rotation, 0.5f);
     }
 
     public void Fade()

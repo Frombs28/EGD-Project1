@@ -107,7 +107,12 @@ public class Move : MonoBehaviour {
         }
     }
 
-    void Stop()
+    void Stop(float fadeTime)
+    {
+        Invoke("DenyMovement", fadeTime);
+    }
+
+    void DenyMovement()
     {
         isPlayerControllable = false;
         rotateScript.fading = true;

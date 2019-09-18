@@ -51,5 +51,17 @@ public class CampfireInteract : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// OnTriggerExit is called when the Collider other has stopped touching the trigger.
+    /// </summary>
+    /// <param name="other">The other Collider involved in this collision.</param>
+    void OnTriggerExit(Collider other)
+    {
+        if(move.isPlayerControllable){
+            if(other.gameObject.tag=="Fire"){
+                text.text = "";
+            }
+        }
+    }
     
 }

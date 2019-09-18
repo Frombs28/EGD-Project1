@@ -1002,8 +1002,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 21.04, y: 7.97, z: 22.7}
-  m_Center: {x: -81.07, y: -13.89, z: 8.25}
+  m_Size: {x: 11.674913, y: 7.970001, z: 10.318004}
+  m_Center: {x: -80.04082, y: -13.89, z: 7.2605734}
 --- !u!1 &8998003636498452716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1063,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCanvas: {fileID: 0}
   c: {fileID: 0}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
 --- !u!1001 &739792677800766903
 PrefabInstance:
   m_ObjectHideFlags: 0

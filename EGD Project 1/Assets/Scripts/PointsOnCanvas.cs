@@ -65,6 +65,7 @@ public class PointsOnCanvas : MonoBehaviour
         }
         if (num == 3)
         {
+            //Debug.Log("update canvas");
             chkThreeP1.sprite = full;
         }
     }

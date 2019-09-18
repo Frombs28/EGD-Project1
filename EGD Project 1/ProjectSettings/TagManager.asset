@@ -29,6 +29,7 @@ TagManager:
   - Down
   - Left
   - Right
+  - Manager
   layers:
   - Default
   - TransparentFX

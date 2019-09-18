@@ -13,7 +13,7 @@ public class ChkPntHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCanvas = FindObjectOfType<Canvas>();
+        mainCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         manager = FindObjectOfType<TurnManager>();
         c = mainCanvas.GetComponent<PointsOnCanvas>();
         player1 = GameObject.FindGameObjectWithTag("playerOne");

@@ -11,19 +11,28 @@ public class TurnManager : MonoBehaviour
     List<Move> playerMove = new List<Move>();
     Teleporter tele = null;
     public Text hintText;
+    public Text turnText;
     public int numTaken = 0;
-    public int maxTurns = 5; 
+    public int maxTurns = 5;
+    bool end;
+    bool last_turn;
+    bool next_last_turn;
     CameraMovement cameraMovement;
+    public PointsOnCanvas mainCanvas;
     // Start is called before the first frame update
     void Start()
     {
         tele = FindObjectOfType<Teleporter>();
+        mainCanvas = FindObjectOfType<PointsOnCanvas>();
         cameraMovement = FindObjectOfType<CameraMovement>();
         cameraMovement.SetTarget(player1);
         if(hintText!=null) hintText.text = "";
         playerMove.Add(player1.GetComponent<Move>());
         playerMove.Add(player2.GetComponent<Move>());
         playerMove[1].SetPlayerControllable(false);
+        end = false;
+        last_turn = false;
+        next_last_turn = false;
 
     }
 
@@ -34,6 +43,15 @@ public class TurnManager : MonoBehaviour
     }
 
     public void SwitchTurns(){
+        if (end)
+        {
+            return;
+        }
+        if (next_last_turn)
+        {
+            last_turn = true;
+            next_last_turn = false;
+        }
         //TO DO: fade screen, control switching
         tele.Fade();
         Debug.Log("switching!!!");
@@ -47,17 +65,23 @@ public class TurnManager : MonoBehaviour
             StartCoroutine(camSwitch(player1, tele.fadeTime));
         }
         numTaken = 0;
+        turnText.text = numTaken.ToString();
     }
 
     ///<summary>
     ///returns false if a turn cannot be taken, true otherwise and increments the number of turns taken
     ///</summary>
     public bool TakeTurn(){
+        if (end)
+        {
+            return false;
+        }
         if(numTaken==maxTurns){
             return false;
         }
-        Debug.Log(numTaken);
+        //Debug.Log(numTaken);
         numTaken++;
+        turnText.text = numTaken.ToString();
         return true;
     }
 
@@ -67,12 +91,31 @@ public class TurnManager : MonoBehaviour
         //EndTurn();
 
         //prevents player from moving
+        if (last_turn && !end)
+        {
+            end = true;
+            mainCanvas.GameOver(player1);
+        }
+        if (end)
+        {
+            return;
+        }
         if(hintText!=null) hintText.text = "You are in " + roomName;
         numTaken = maxTurns;
+        turnText.text = numTaken.ToString();
         Debug.Log(roomName);
     }
 
     public void EndTurn(){
+        if (last_turn && !end)
+        {
+            end = true;
+            mainCanvas.GameOver(player1);
+        }
+        if (end)
+        {
+            return;
+        }
         SwitchTurns();
     }
 
@@ -81,5 +124,10 @@ public class TurnManager : MonoBehaviour
         if(hintText!=null) hintText.text = "";
         cameraMovement.SetTarget(player);
         playerMove[currentPlayer-1].SetPlayerControllable(true);
+    }
+
+    public void LastTurn()
+    {
+        next_last_turn = true;
     }
 }

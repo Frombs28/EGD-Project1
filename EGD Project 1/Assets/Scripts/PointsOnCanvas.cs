@@ -16,6 +16,9 @@ public class PointsOnCanvas : MonoBehaviour
     public Sprite empty;
     public Sprite full;
 
+    public Image endScene;
+    public Text endText;
+
     public Text moveAmount;
 
 
@@ -30,6 +33,7 @@ public class PointsOnCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        endScene.canvasRenderer.SetAlpha(0.0f);
         playerOneCheck = new string[3];
         playerOneVisit = new bool[3];
         playerTwoCheck = new string[3];
@@ -40,12 +44,12 @@ public class PointsOnCanvas : MonoBehaviour
             playerTwoVisit[i] = false;
             
         }
-        playerOneCheck[0] = "2";
-        playerOneCheck[1] = "3";
-        playerOneCheck[2] = "4";
-        playerTwoCheck[0] = "15";
-        playerOneCheck[1] = "3";
-        playerOneCheck[2] = "6";
+        playerOneCheck[0] = "11";
+        playerOneCheck[1] = "4";
+        playerOneCheck[2] = "9";
+        playerTwoCheck[0] = "6";
+        playerTwoCheck[1] = "15";
+        playerTwoCheck[2] = "5";
     }
 
     // Update is called once per frame
@@ -57,6 +61,7 @@ public class PointsOnCanvas : MonoBehaviour
     {
         if (num == 1)
         {
+            Debug.Log("Update");
             chkOneP1.sprite = full;
         }
         if (num == 2)
@@ -65,6 +70,7 @@ public class PointsOnCanvas : MonoBehaviour
         }
         if (num == 3)
         {
+            //Debug.Log("update canvas");
             chkThreeP1.sprite = full;
         }
     }
@@ -87,5 +93,19 @@ public class PointsOnCanvas : MonoBehaviour
     public void MoveCount(int num)
     {
         moveAmount.text = "" + num;
+    }
+
+    public void GameOver(GameObject winner)
+    {
+        endScene.canvasRenderer.SetAlpha(1.0f);
+        if (winner == gameObject)
+        {
+            endText.text = "It's a tie: you both win!";
+        }
+        else
+        {
+            string winName = winner.name;
+            endText.text = "Congratulations " + winName + "!";
+        }
     }
 }

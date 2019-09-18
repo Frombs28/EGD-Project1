@@ -24,6 +24,12 @@ TagManager:
   - 16
   - playerOne
   - playerTwo
+  - Fade
+  - Up
+  - Down
+  - Left
+  - Right
+  - Manager
   layers:
   - Default
   - TransparentFX

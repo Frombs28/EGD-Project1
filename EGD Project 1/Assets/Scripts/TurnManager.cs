@@ -16,6 +16,7 @@ public class TurnManager : MonoBehaviour
     public int maxTurns = 5;
     bool end;
     bool last_turn;
+    bool next_last_turn;
     CameraMovement cameraMovement;
     public PointsOnCanvas mainCanvas;
     // Start is called before the first frame update
@@ -31,6 +32,7 @@ public class TurnManager : MonoBehaviour
         playerMove[1].SetPlayerControllable(false);
         end = false;
         last_turn = false;
+        next_last_turn = false;
 
     }
 
@@ -44,6 +46,11 @@ public class TurnManager : MonoBehaviour
         if (end)
         {
             return;
+        }
+        if (next_last_turn)
+        {
+            last_turn = true;
+            next_last_turn = false;
         }
         //TO DO: fade screen, control switching
         tele.Fade();
@@ -121,6 +128,6 @@ public class TurnManager : MonoBehaviour
 
     public void LastTurn()
     {
-        last_turn = true;
+        next_last_turn = true;
     }
 }

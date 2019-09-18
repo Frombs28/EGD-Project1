@@ -48,8 +48,8 @@ public class PointsOnCanvas : MonoBehaviour
         playerOneCheck[1] = "4";
         playerOneCheck[2] = "9";
         playerTwoCheck[0] = "6";
-        playerOneCheck[1] = "15";
-        playerOneCheck[2] = "5";
+        playerTwoCheck[1] = "15";
+        playerTwoCheck[2] = "5";
     }
 
     // Update is called once per frame

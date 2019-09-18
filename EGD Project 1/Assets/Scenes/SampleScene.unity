@@ -290,6 +290,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Torches B
       objectReference: {fileID: 0}
+    - target: {fileID: 6016973426692643766, guid: 96cbc6a1d43d941158e67b61b18bae68,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -6358537232003938905, guid: 96cbc6a1d43d941158e67b61b18bae68,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -349,11 +354,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6016973426692643766, guid: 96cbc6a1d43d941158e67b61b18bae68,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96cbc6a1d43d941158e67b61b18bae68, type: 3}
@@ -708,7 +708,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -1.3065099e-36, z: 1e-45, w: 6.32e-43}
+  m_BoundingSphereOverride: {x: 0, y: 293900540, z: 1e-45, w: 1.39e-43}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -881,7 +881,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d4912f672ebcb4e4ab68c9f2982213db, type: 2}
+      objectReference: {fileID: 2100000, guid: b1b11f85a4a20401a9050938028c466f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d469789036d119845a5519505de23c82, type: 3}
 --- !u!1 &771118601
@@ -2144,7 +2144,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 56b645c54434240debc55e9a56461d16, type: 2}
+      objectReference: {fileID: 2100000, guid: fbf24c5d2cacc46a6a313e5515499e22, type: 2}
     - target: {fileID: -4216859302048453862, guid: 055f4eb3ce3314c4cb8a3341a711d95f,
         type: 3}
       propertyPath: m_LocalPosition.x

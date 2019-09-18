@@ -11,6 +11,7 @@ public class TurnManager : MonoBehaviour
     List<Move> playerMove = new List<Move>();
     Teleporter tele = null;
     public Text hintText;
+    public Text turnText;
     public int numTaken = 0;
     public int maxTurns = 5; 
     CameraMovement cameraMovement;
@@ -47,6 +48,7 @@ public class TurnManager : MonoBehaviour
             StartCoroutine(camSwitch(player1, tele.fadeTime));
         }
         numTaken = 0;
+        turnText.text = numTaken.ToString();
     }
 
     ///<summary>
@@ -56,8 +58,9 @@ public class TurnManager : MonoBehaviour
         if(numTaken==maxTurns){
             return false;
         }
-        Debug.Log(numTaken);
+        //Debug.Log(numTaken);
         numTaken++;
+        turnText.text = numTaken.ToString();
         return true;
     }
 
@@ -69,6 +72,7 @@ public class TurnManager : MonoBehaviour
         //prevents player from moving
         if(hintText!=null) hintText.text = "You are in " + roomName;
         numTaken = maxTurns;
+        turnText.text = numTaken.ToString();
         Debug.Log(roomName);
     }
 

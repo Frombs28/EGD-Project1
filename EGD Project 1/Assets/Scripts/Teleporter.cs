@@ -16,6 +16,7 @@ public class Teleporter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        fade = GameObject.FindGameObjectWithTag("Fade").GetComponent<Image>();
         fade.canvasRenderer.SetAlpha(0.0f);
         startTime = 0f;
         turns = FindObjectOfType<TurnManager>();

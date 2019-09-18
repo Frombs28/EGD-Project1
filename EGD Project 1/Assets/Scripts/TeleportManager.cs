@@ -18,7 +18,7 @@ public class TeleportManager : MonoBehaviour
             GameObject left = room.transform.GetChild(3).gameObject;
 
             // First do up: if i is less than 4, go to bottom
-            if(i < 4)
+            if (i < 4)
             {
                 up.SendMessage("SetTarget", rooms[i+12]);
             }
@@ -30,31 +30,31 @@ public class TeleportManager : MonoBehaviour
             // Then do down: if i is greater than 11, go to top
             if (i > 11)
             {
-                up.SendMessage("SetTarget", rooms[i - 12]);
+                down.SendMessage("SetTarget", rooms[i - 12]);
             }
             else
             {
-                up.SendMessage("SetTarget", rooms[i + 4]);
+                down.SendMessage("SetTarget", rooms[i + 4]);
             }
 
             // Next right: if i mod 4 is equal to 0, go to left
             if ((int)(i+1) % 4 == 0)
             {
-                up.SendMessage("SetTarget", rooms[i - 3]);
+                right.SendMessage("SetTarget", rooms[i - 3]);
             }
             else
             {
-                up.SendMessage("SetTarget", rooms[i + 1]);
+                right.SendMessage("SetTarget", rooms[i + 1]);
             }
 
             // Finally do left: i it mod 4 is equal to 1, go to right
             if ((int)(i + 1) % 4 == 1)
             {
-                up.SendMessage("SetTarget", rooms[i + 3]);
+                left.SendMessage("SetTarget", rooms[i + 3]);
             }
             else
             {
-                up.SendMessage("SetTarget", rooms[i - 1]);
+                left.SendMessage("SetTarget", rooms[i - 1]);
             }
         }
     }

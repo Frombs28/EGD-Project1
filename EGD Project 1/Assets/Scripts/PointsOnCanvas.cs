@@ -44,12 +44,12 @@ public class PointsOnCanvas : MonoBehaviour
             playerTwoVisit[i] = false;
             
         }
-        playerOneCheck[0] = "2";
-        playerOneCheck[1] = "3";
-        playerOneCheck[2] = "4";
-        playerTwoCheck[0] = "15";
-        playerOneCheck[1] = "3";
-        playerOneCheck[2] = "6";
+        playerOneCheck[0] = "11";
+        playerOneCheck[1] = "4";
+        playerOneCheck[2] = "9";
+        playerTwoCheck[0] = "6";
+        playerTwoCheck[1] = "15";
+        playerTwoCheck[2] = "5";
     }
 
     // Update is called once per frame
@@ -61,6 +61,7 @@ public class PointsOnCanvas : MonoBehaviour
     {
         if (num == 1)
         {
+            Debug.Log("Update");
             chkOneP1.sprite = full;
         }
         if (num == 2)

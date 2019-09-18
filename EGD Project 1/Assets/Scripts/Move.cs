@@ -17,6 +17,9 @@ public class Move : MonoBehaviour {
     bool playing = false;
     public Text txt;
     private rotate rotateScript;
+    public List<AudioClip> aud;
+    public float footstepTime = 0.5f;
+    private float footTimer = 0f;
 
     public bool isPlayerControllable = true;
 
@@ -28,6 +31,7 @@ public class Move : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rgd = GetComponent<Rigidbody>();
+        footStep = GetComponent<AudioSource>();
         rotateScript = cam.GetComponent<rotate>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -54,12 +58,23 @@ public class Move : MonoBehaviour {
             }
             if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0 && !playing || Mathf.Abs(Input.GetAxis("Vertical")) > 0 && !playing)
             {
+                int i = Random.Range(0, aud.Count - 1);
+                footTimer = 0;
+                footStep.clip = aud[i];
                 footStep.Play();
                 playing = true;
             }
             if (Mathf.Abs(Input.GetAxis("Horizontal")) == 0 && Mathf.Abs(Input.GetAxis("Vertical")) == 0)
             {
                 footStep.Stop();
+                playing = false;
+            }
+        }
+        if(playing)
+        {
+            footTimer += Time.deltaTime;
+            if(footTimer > footstepTime)
+            {
                 playing = false;
             }
         }

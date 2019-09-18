@@ -764,7 +764,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5905e-41, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: -6.3384464e+29, y: 1.7592186e+13, z: -1.7014118e+38,
+    w: 2.5243547e-29}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -928,14 +929,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8998003636498452716, guid: d469789036d119845a5519505de23c82,
-        type: 3}
-      propertyPath: m_TagString
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9034787880706371502, guid: d469789036d119845a5519505de23c82,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8998003636498452716, guid: d469789036d119845a5519505de23c82,
+        type: 3}
+      propertyPath: m_TagString
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1075,17 +1076,19 @@ MonoBehaviour:
   chkThreeP2: {fileID: 891807289}
   empty: {fileID: 21300000, guid: 676af8e3dd849c64eb9003c5f7312a0c, type: 3}
   full: {fileID: 21300000, guid: 39f912a8d07f2394780315356b2ec360, type: 3}
+  endScene: {fileID: 0}
+  endText: {fileID: 0}
   moveAmount: {fileID: 1066123362}
   playerOneCheck:
   - 11
   - 4
   - 9
-  playerOneVisit: 
+  playerOneVisit: 000000
   playerTwoCheck:
   - 6
   - 15
   - 5
-  playerTwoVisit: 
+  playerTwoVisit: 000000
 --- !u!1 &808879664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5141292147369603637, guid: 4551bbf2a29a36c49b4ee48009c5240a,
@@ -2048,6 +2051,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerManager (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5141292147369603637, guid: 4551bbf2a29a36c49b4ee48009c5240a,
+        type: 3}
+      propertyPath: m_Name
+      value: Player 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5141292147369603637, guid: 4551bbf2a29a36c49b4ee48009c5240a,
+        type: 3}
+      propertyPath: m_TagString
+      value: playerTwo
+      objectReference: {fileID: 0}
     - target: {fileID: 5141292146451577234, guid: 4551bbf2a29a36c49b4ee48009c5240a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2148,16 +2161,6 @@ PrefabInstance:
       propertyPath: aud.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 30e965821d9d40a4e9d52c9457594bb5, type: 3}
-    - target: {fileID: 5141292147369603637, guid: 4551bbf2a29a36c49b4ee48009c5240a,
-        type: 3}
-      propertyPath: m_Name
-      value: Player 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5141292147369603637, guid: 4551bbf2a29a36c49b4ee48009c5240a,
-        type: 3}
-      propertyPath: m_TagString
-      value: playerTwo
-      objectReference: {fileID: 0}
     - target: {fileID: 5141292147369603636, guid: 4551bbf2a29a36c49b4ee48009c5240a,
         type: 3}
       propertyPath: m_Size.y
@@ -2206,6 +2209,7 @@ MonoBehaviour:
   turnText: {fileID: 1066123362}
   numTaken: 0
   maxTurns: 5
+  mainCanvas: {fileID: 0}
 --- !u!4 &1300763977
 Transform:
   m_ObjectHideFlags: 0
@@ -3213,6 +3217,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5141292147369603637, guid: 4551bbf2a29a36c49b4ee48009c5240a,
+        type: 3}
+      propertyPath: m_TagString
+      value: playerOne
+      objectReference: {fileID: 0}
+    - target: {fileID: 5141292147369603637, guid: 4551bbf2a29a36c49b4ee48009c5240a,
+        type: 3}
+      propertyPath: m_Name
+      value: Player 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5141292146451577234, guid: 4551bbf2a29a36c49b4ee48009c5240a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3313,16 +3327,6 @@ PrefabInstance:
       propertyPath: aud.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 30e965821d9d40a4e9d52c9457594bb5, type: 3}
-    - target: {fileID: 5141292147369603637, guid: 4551bbf2a29a36c49b4ee48009c5240a,
-        type: 3}
-      propertyPath: m_TagString
-      value: playerOne
-      objectReference: {fileID: 0}
-    - target: {fileID: 5141292147369603637, guid: 4551bbf2a29a36c49b4ee48009c5240a,
-        type: 3}
-      propertyPath: m_Name
-      value: Player 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5141292147369603636, guid: 4551bbf2a29a36c49b4ee48009c5240a,
         type: 3}
       propertyPath: m_Size.y

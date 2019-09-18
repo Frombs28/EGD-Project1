@@ -105,4 +105,21 @@ public class Move : MonoBehaviour {
             txt.text = "";
         }
     }
+
+    void Stop()
+    {
+        isPlayerControllable = false;
+        rotateScript.fading = true;
+    }
+
+    void Begin(float fadeTime)
+    {
+        rotateScript.fading = false;
+        Invoke("AllowMovement", fadeTime+2);
+    }
+
+   void AllowMovement()
+    {
+        isPlayerControllable = true;
+    }
 }

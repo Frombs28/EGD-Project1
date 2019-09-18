@@ -12,13 +12,14 @@ public class Teleporter : MonoBehaviour
     public float fadeTime = 0.5f;
     public float fadeDelay = 0.2f;
     public GameObject player;
-    public GameObject turns;
+    TurnManager turns;
 
     // Start is called before the first frame update
     void Start()
     {
         fade.canvasRenderer.SetAlpha(0.0f);
         startTime = 0f;
+        turns = FindObjectOfType<TurnManager>();
     }
 
     // Update is called once per frame
@@ -29,7 +30,7 @@ public class Teleporter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("playerOne") || (other.gameObject.CompareTag("playerTwo")) && (turns.GetComponent<TurnManager>().TakeTurn()))
+        if ((other.gameObject.CompareTag("playerOne") || (other.gameObject.CompareTag("playerTwo"))) && (turns.TakeTurn()))
         {
             // Trigger fade out
             Fade();

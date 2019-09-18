@@ -10,12 +10,12 @@ public class CameraMovement : MonoBehaviour
     //target should be set to the first player to get correctOffset
     public GameObject target = null;
     Follow follow;
-    void Start()
+    void Awake()
     {
         if(target!=null){
             offset = transform.position - target.transform.position;
         }
-        follow = GetComponent<Follow>();
+        follow = gameObject.GetComponent<Follow>();
     }
 
     // Update is called once per frame

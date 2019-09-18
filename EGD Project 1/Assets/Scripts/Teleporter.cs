@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Teleporter : MonoBehaviour
 {
     public GameObject target;
-    public Camera main;
     public Image fade;
     float startTime;
     public float fadeTime = 0.5f;
@@ -17,6 +16,7 @@ public class Teleporter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        fade = GameObject.FindGameObjectWithTag("Fade").GetComponent<Image>();
         fade.canvasRenderer.SetAlpha(0.0f);
         startTime = 0f;
         turns = FindObjectOfType<TurnManager>();
@@ -65,6 +65,11 @@ public class Teleporter : MonoBehaviour
     public void Fade()
     {
         StartCoroutine("FadeOut");
+    }
+
+    void SetTarget(GameObject newTarget)
+    {
+        target = newTarget;
     }
 
 

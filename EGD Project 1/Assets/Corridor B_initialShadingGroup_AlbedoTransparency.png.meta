@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-guid: e84b1d29ca4394cb1959e4c168a8247e
-=======
-guid: e7cd0205308b43d48a0832c279ed776f
->>>>>>> Stashed changes
+guid: 6719a5b28186a4e2bb6a8c359cc39e4c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,6 +68,17 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 10
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Teleporter : MonoBehaviour
 {
     public GameObject target;
-    public Camera main;
     public Image fade;
     float startTime;
     public float fadeTime = 0.5f;
@@ -65,6 +64,11 @@ public class Teleporter : MonoBehaviour
     public void Fade()
     {
         StartCoroutine("FadeOut");
+    }
+
+    void SetTarget(GameObject newTarget)
+    {
+        target = newTarget;
     }
 
 

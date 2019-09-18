@@ -16,6 +16,9 @@ public class PointsOnCanvas : MonoBehaviour
     public Sprite empty;
     public Sprite full;
 
+    public Image endScene;
+    public Text endText;
+
     public Text moveAmount;
 
 
@@ -30,6 +33,7 @@ public class PointsOnCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        endScene.canvasRenderer.SetAlpha(0.0f);
         playerOneCheck = new string[3];
         playerOneVisit = new bool[3];
         playerTwoCheck = new string[3];
@@ -88,5 +92,19 @@ public class PointsOnCanvas : MonoBehaviour
     public void MoveCount(int num)
     {
         moveAmount.text = "" + num;
+    }
+
+    public void GameOver(GameObject winner)
+    {
+        endScene.canvasRenderer.SetAlpha(1.0f);
+        if (winner == gameObject)
+        {
+            endText.text = "It's a tie: you both win!";
+        }
+        else
+        {
+            string winName = winner.name;
+            endText.text = "Congratulations " + winName + "!";
+        }
     }
 }
